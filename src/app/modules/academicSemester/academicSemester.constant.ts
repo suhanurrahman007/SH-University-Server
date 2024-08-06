@@ -22,3 +22,13 @@ export const academicSemesterName: AcademicSemesterName[] = [
 ];
 
 export const academicSemesterCode: AcademicSemesterCode[] = ['01', '02', '03'];
+
+
+ export type TAcademicSemesterNameCodeMapper = {
+   [key: string]: string;
+ };
+ export const academicSemesterNameCodeMapper: TAcademicSemesterNameCodeMapper = {
+   Spring: '01',
+   Summer: '02',
+   Fall: '03',
+ };
