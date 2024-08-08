@@ -12,6 +12,24 @@ const createAcademicSemesterIntoDB = async(payload: TAcademicSemester)=>{
     return result;
 }
 
+const getAllAcademicStudentIntoDB = async()=>{
+    const result = await academicSemesterModel.find()
+    return result;
+}
+
+const getSingleAcademicStudentIntoDB = async(id: string)=>{
+    const result = await academicSemesterModel.findById(id)
+    return result;
+}
+
+const getUpdateAcademicStudentIntoDB = async (id: string) => {
+  const result = await academicSemesterModel.updateOne({ id });
+  return result;
+};
+
 export const AcademicSemesterService = {
-    createAcademicSemesterIntoDB
+    createAcademicSemesterIntoDB,
+    getAllAcademicStudentIntoDB,
+    getSingleAcademicStudentIntoDB,
+    getUpdateAcademicStudentIntoDB
 }
