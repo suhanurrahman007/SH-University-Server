@@ -143,6 +143,7 @@ const createFacultyIntoDB = async (
       payload.profileImg = secure_url as string;
     }
 
+    
     // create a user (transaction-1)
     const newUser = await User.create([userData], { session }); // array
 

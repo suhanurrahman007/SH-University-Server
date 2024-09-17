@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 import { UploadApiResponse, v2 as cloudinary } from 'cloudinary';
 import fs from 'fs';
 import multer from 'multer';
 import config from '../config';
+import AppError from '../errors/AppError';
+import httpStatus from 'http-status';
 
 cloudinary.config({
   cloud_name: config.cloudinary_cloud_name,
@@ -23,11 +26,13 @@ export const sendImageToCloudinary = (
         }
         resolve(result as UploadApiResponse);
         // delete a file asynchronously
-        fs.unlink(path, (err) => {
+        fs.unlink(path, (err: NodeJS.ErrnoException | null) => {
           if (err) {
-            console.log(err);
+            // Pass the error message to your AppError
+            throw new AppError(httpStatus.BAD_REQUEST, err.message);
           } else {
-            console.log('File is deleted.');
+            // File deletion was successful, so throw a different message
+            throw new AppError(httpStatus.BAD_REQUEST, 'File is deleted');
           }
         });
       },

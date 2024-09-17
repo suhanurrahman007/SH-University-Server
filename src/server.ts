@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import { Server } from 'http';
 import mongoose from 'mongoose';
 import app from './app';
-import seedSuperAdmin from './app/DB';
+import seedSuperAdmin from './app/SuperAdmin';
 import config from './app/config';
 
 let server: Server;
